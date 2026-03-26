@@ -65,3 +65,4 @@ Sistema de delivery desenvolvido com Spring Boot e Java 21.​
 ​
 
 ## 👨‍💻 Desenvolvedor
+[Rafael Maia] - [Arquitetura de Sistemas]
