@@ -3,11 +3,7 @@ package com.deliverytech.delivery_api.controller;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.deliverytech.delivery_api.model.Cliente;
 import com.deliverytech.delivery_api.service.ClienteService;
@@ -29,6 +25,22 @@ public class ClienteController {
     @GetMapping
     public List<Cliente> listarAtivos(){
         return service.listarAtivos();
+    }
+    @GetMapping("/{id}")
+    public Cliente buscarPorId(@PathVariable Long id){
+        return service.buscarPorId(id);
+    }
+
+    @PutMapping("/{id}/inativar")
+    public void inativar(@PathVariable Long id){
+
+    service.inativar(id);
+
+    }
+
+    @PutMapping("/{id}/atualizar-dados-clientes")
+    public Cliente atualizar(@PathVariable Long id, @RequestBody Cliente dados){
+        return service.atualizar(id, dados);
     }
 
 }
