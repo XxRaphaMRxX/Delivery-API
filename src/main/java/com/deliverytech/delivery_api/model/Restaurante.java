@@ -1,6 +1,6 @@
 package com.deliverytech.delivery_api.model;
 
-
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,18 +19,33 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name="cliente")
-public class Cliente {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+@Table(name = "restaurante")
+public class Restaurante {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nome;
-    private String email;
-    private String telefone;
+
+    private String categoria;
+
     private String endereco;
-    private Boolean ativo;
+
+    private String telefone;
+
+    /*     @Column(name = "taxa_entrega")
+    private BigDecimal taxaEntrega; */
+
+    private BigDecimal avaliacao;
+
+    private boolean ativo;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "cliente", fetch=FetchType.LAZY)
+    @OneToMany(mappedBy= "restaurante", fetch=FetchType.LAZY)
+    private List<Produto> produtos = new ArrayList<>();
+
+    @JsonIgnore
+    @OneToMany(mappedBy= "restaurante", fetch=FetchType.LAZY)
     private List<Pedido> pedidos = new ArrayList<>();
 }
